@@ -5,171 +5,94 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title>评价</title>
-		<link rel="stylesheet" href="/static/css/new_file.css" type="text/css"/>
 		<script type="text/javascript" src="/static/js/jquery-1.8.2.min.js" ></script>
-	</head>
-	
-	<body>
-		<!--头部  star-->
-		<header>
-<#--			<a href="javascript:history.go(-1);">-->
-<#--				<div class="_left"><img src="/static/images/left.png"></div>-->
-				   评价
-<#--			</a>-->
-		<br>
-
-		</header>
-
-		<!--头部 end-->
-        <!--内容 star-->
-
-		<div class="contaniner" style="background-color: white;margin-top: 15%;padding: 0 5px" >
-			&nbsp;&nbsp;请选择店铺：<select style="margin-top: 10px;margin-bottom: 10px">
-				<option>朝阳大街店</option>
-				<option>长城北大街店</option>
-				<option>河北大学店</option>
-			</select><br>
-			&nbsp;&nbsp;请选择服务员：<select style="margin-top: 10px;margin-bottom: 10px">
-				<option>白世辉</option>
-				<option>薛振春</option>
-				<option>是夏龙</option>
-			</select>
-		</div>
-		<div class="contaniner fixed-cont" style="margin-top: 10px">
-
-			<!--1-->
-			<section class="assess">
-
-				<p>
-					<textarea rows="20" placeholder="请写下对我们服务员的评价，对我们帮助很大哦～～"></textarea>
-				</p>
-				<ul>
-					<li>评价</li>
-					<li class="assess-right">
-						<div><input type="radio" name="radio" value="radio1"/><img src="/static/images/hua.png"/></div>
-						<div><input type="radio" name="radio" value="radio2"/><img src="/static/images/huah.png"/></div>
-						<div><input type="radio" name="radio" value="radio3"/><img src="/static/images/huae.png"/></div>
-					</li>
-				</ul>
-			</section>
-			<!--2-->
-			<section class="main">
-			<div class="main-wrap">
-				<span class="revtit">综合评分:</span>
-				<div id="mydiv1" currentIndex="0" class="mydiv">
-	    			<ul class="star_ul">
-				        <li num="1"><img src="/static/images/star_empty.png" class="xing_hui"/></li>
-				        <li num="2"><img src="/static/images/star_empty.png"  class="xing_hui"/></li>
-				        <li num="3"><img src="/static/images/star_empty.png"  class="xing_hui"/></li>
-				        <li num="4"><img src="/static/images/star_empty.png"  class="xing_hui"/></li>
-				        <li num="5"><img src="/static/images/star_empty.png"  class="xing_hui"/></li>
-			   		</ul>
-				</div>
-			</div>
-			
-			<div class="main-wrap">
-				<span class="revtit">基本素质:</span>
-				<div id="mydiv2" currentIndex="0" class="mydiv">
-	    			<ul class="star_ul">
-				        <li num="1"><img src="/static/images/star_empty.png" class="xing_hui"/></li>
-				        <li num="2"><img src="/static/images/star_empty.png"  class="xing_hui"/></li>
-				        <li num="3"><img src="/static/images/star_empty.png"  class="xing_hui"/></li>
-				        <li num="4"><img src="/static/images/star_empty.png"  class="xing_hui"/></li>
-				        <li num="5"><img src="/static/images/star_empty.png"  class="xing_hui"/></li>
-			   		</ul>
-				</div>
-			</div>
-		
-			<div class="main-wrap">
-				<span class="revtit">仪容着装:</span>
-				<div id="mydiv3" currentIndex="0" class="mydiv">
-	    			<ul class="star_ul">
-				        <li num="1"><img src="/static/images/star_empty.png" class="xing_hui"/></li>
-				        <li num="2"><img src="/static/images/star_empty.png"  class="xing_hui"/></li>
-				        <li num="3"><img src="/static/images/star_empty.png"  class="xing_hui"/></li>
-				        <li num="4"><img src="/static/images/star_empty.png"  class="xing_hui"/></li>
-				        <li num="5"><img src="/static/images/star_empty.png"  class="xing_hui"/></li>
-			   		</ul>
-				</div>
-			</div>
-	</section>
-		</div>
-		<!--内容 end-->
-        
-        <!--底部 star-->
-		<footer class="assess-footer fixed-footer ">
-			<ul>
-				<li>
-<#--					<input type="checkbox" id="ass" />-->
-<#--					<label for="ass" onselectstart="return false">匿名评价</label>-->
-				</li>
-				<input type="button" value="发表评论" />
-			</ul>
-		</footer>
-       <!--底部  end-->
-		<script type="text/javascript">
-				$(".assess-footer ul li label").on('touchstart',function(){
-			if($(this).hasClass('assd')){
-				$(".assess-footer ul li label").removeClass("assd")
-			}else{
-				$(".assess-footer ul li label").addClass("assd")
-			};
-		});
-			
-//匿名评价
-        var isclick = false;
-        function change(mydivid,num) {
-            if (!isclick) {
-                var tds = $("#"+mydivid+" ul li");
-                for (var i = 0; i < num; i++) {
-                    var td = tds[i];
-                    $(td).find("img").attr("src","/static\/images\/star_full.png");
-                }
-                var tindex = $("#"+mydivid).attr("currentIndex");
-                tindex = tindex==0?0:tindex+1;
-                for (var j = num; j < tindex; j++) {
-                    var td = tds[j];
-                    $(td).find("img").attr("src","images\/star_empty.png");
-                }
-                $("#"+mydivid).attr("currentIndex",num);
-            }
-        }
-        function repeal(mydivid,num) {
-            if (!isclick) {
-                var tds = $("#"+mydivid+" ul li");
-                var tindex = $("#"+mydivid).attr("currentIndex");
-                tindex = tindex==0?0:tindex+1;
-                for (var i = tindex; i < num; i++) {
-                    var td = tds[i];
-                    $(td).find("img").attr("src","images\/star_empty.png");
-                }
-                $("#"+mydivid).attr("currentIndex",num);
-            }
-        }
-        function change1(mydivid,num) {
-            if (!isclick) {
-                change(mydivid,num);
-
-            }
-            else {
-                alert("Sorry,You had clicked me!");
-            }
-        }
-        $(function(){
-            initEvent('mydiv1');
-            initEvent('mydiv2');
-            initEvent('mydiv3');
-        });
-        function initEvent(mydivid) {
-            var tds = $("#"+mydivid+" ul li");
-            for (var i = 0; i < tds.length; i++) {
-                var td = tds[i];
-                $(td).live('mouseover',function(){var num = $(this).attr("num");change(mydivid,num);});
-                $(td).live('click',function(){var num = $(this).attr("num");change1(mydivid,num);});
-            }
-        }
+		<style>
+			.radio{
+				margin: 10px 6px;
+			}
+			button{
+				margin-left: 20%;
+				margin-top: 50px;
+				background-color: #1E9FFF;
+				border: none;
+				height: 30px;
+				width: 80px;
+				color: white
+			}
+		</style>
+		<script>
+			$(function () {
+				$("#btn1").click(function () {
+					$("#shop").hide();
+					$("#waiter").show();
+					return false;
+				})
+				$("#btn2").click(function () {
+					$("#shop").hide();
+					$("#waiter").hide();
+					$("#question").show();
+					return false;
+				})
+			})
 
 		</script>
+	</head>
+	
+	<body style="background-color: white;">
+	<form action="/customer/comment/add" method="post">
+		<div id="shop" style="margin-top: 50px;margin-left: 16%">
+			<p style="margin: 0 auto;display: block;font-size: 25px;">请选择要评价的店面：</p>
+			<br>
+			<div style="margin-top: 20px;font-size: 20px;margin-left: 47px" >
+				<input type="radio" class="radio" name="shop" value="1">保百店<br>
+				<input type="radio" class="radio" name="shop" value="2">茂业店<br>
+				<input type="radio" class="radio" name="shop" value="3">七一路店<br>
+				<input type="radio" class="radio" name="shop" value="4">华创店<br>
+				<input type="radio" class="radio" name="shop" value="5">万博店<br>
+			</div>
+			<button type="button" id="btn1">下一步</button>
+		</div>
+
+		<div id="waiter" style="margin-top: 50px;margin-left: 16%;display: none">
+			<p style="margin: 0 auto;display: block;font-size: 25px;">请选择要评价的服务员：</p>
+			<br>
+			<div style="margin-top: 20px;font-size: 20px;margin-left: 47px" >
+				<input type="radio" class="radio" name="waiter" value="1">服务员一<br>
+				<input type="radio" class="radio" name="waiter" value="2">服务员二<br>
+				<input type="radio" class="radio" name="waiter" value="3">服务员三<br>
+				<input type="radio" class="radio" name="waiter" value="4">服务员四<br>
+				<input type="radio" class="radio" name="waiter" value="5">服务员五<br>
+			</div>
+			<button type="button" id="btn2">下一步</button>
+		</div>
+
+		<div id="question" style="margin-top: 50px;margin-left: 16%;display: none">
+			<p style="margin: 0 auto;display: block;font-size: 25px;">请选择进行评价：</p>
+			<br>
+
+				1、xxxxxxxxxxxxxxxx<br>
+			<div style="margin-top: 20px;font-size: 20px;margin-left: 47px" >
+				<input type="radio" class="radio" name="question1" value="1">满意<br>
+				<input type="radio" class="radio" name="question1" value="2">一般<br>
+				<input type="radio" class="radio" name="question1" value="3">不满意<br>
+			</div>
+				2、xxxxxxxxxxxxxxxx <br>
+			<div style="margin-top: 20px;font-size: 20px;margin-left: 47px" >
+				<input type="radio" class="radio" name="question2" value="1">满意<br>
+				<input type="radio" class="radio" name="question2" value="2">一般<br>
+				<input type="radio" class="radio" name="question2" value="3">不满意<br>
+			</div>
+				3、xxxxxxxxxxxxxxxx <br>
+			<div style="margin-top: 20px;font-size: 20px;margin-left: 47px" >
+				<input type="radio" class="radio" name="question3" value="1">满意<br>
+				<input type="radio" class="radio" name="question3" value="2">一般<br>
+				<input type="radio" class="radio" name="question3" value="3">不满意<br>
+			</div>
+			<button id="bt3">提交</button>
+		</div>
+
+	</form>
+
 	</body>
 
 </html>

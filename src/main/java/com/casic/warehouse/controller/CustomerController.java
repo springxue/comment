@@ -5,11 +5,13 @@ import com.casic.warehouse.bean.query.CustomerQuery;
 import com.casic.warehouse.common.Result;
 import com.casic.warehouse.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -96,5 +98,15 @@ public class CustomerController {
     @RequestMapping("comment")
     public String comment(){
         return "views/customer/comment";
+    }
+    @RequestMapping("comment/add")
+    public String add(HttpServletRequest request){
+        System.out.println(request.getParameter("shop"));
+        System.out.println(request.getParameter("waiter"));
+        System.out.println(request.getParameter("question1"));
+        System.out.println(request.getParameter("question2"));
+        System.out.println(request.getParameter("question3"));
+
+        return "views/customer/thanks";
     }
 }
